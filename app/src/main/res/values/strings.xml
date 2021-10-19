@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:ignore="MissingTranslation">loftschooll</string>
+    <string name="Title">title</string>
+    <string name="Prise">prise</string>
+    <string name="Add">add</string>
+
+</resources>
