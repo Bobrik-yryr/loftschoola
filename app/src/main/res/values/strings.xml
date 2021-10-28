@@ -2,7 +2,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" tools:ignore="MissingTranslation">loftschooll</string>
     <string name="Title">title</string>
-    <string name="Prise">prise</string>
+    <string name="Price">price</string>
     <string name="Add">add</string>
+
+    <array name="main_pager_titles">
+        <item>expenses</item>
+        <item>incomes</item>
+        <item>balance</item>
+    </array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

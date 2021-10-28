@@ -1,26 +1,63 @@
 package com.barabanovk.loftschooll;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.widget.TableLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainActivity extends AppCompatActivity {
+
+    TabLayout tabs;
+    ViewPager2 pages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnAdd = findViewById(R.id.btn_add);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
+       tabs = findViewById(R.id.tabs);
+       pages = findViewById(R.id.pages);
+
+        //        connect pages and fragments
+        pages.setAdapter(new MainPagerAdapter(this));
+
+//        connect tabs and pages
+        TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabs, pages, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
-                startActivity(intent);
+            public void onConfigureTab(TabLayout.Tab tab, int position) {
+                tab.setText(getResources().getStringArray(R.array.main_pager_titles)[position]);
             }
         });
+        tabLayoutMediator.attach();
+    }
+
+    private class MainPagerAdapter extends FragmentStateAdapter {
+
+        public MainPagerAdapter(FragmentActivity fragmentActivity) {
+            super(fragmentActivity);
+        }
+
+        @Override
+        public Fragment createFragment(int position) {
+            if (position == 2){
+                return new BudgetFragment();
+            }
+            else {
+                BudgetFragment budgetFragment = BudgetFragment.newInstance(position);
+                return budgetFragment;
+            }
+        }
+
+        @Override
+        public int getItemCount() {
+            return 3;
+        }
     }
 }
