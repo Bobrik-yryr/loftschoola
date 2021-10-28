@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="Title">Название</string>
-    <string name="Prise">Цена</string>
+    <string name="Price">Цена</string>
     <string name="Add">Добавить</string>
+
+    <array name="main_pager_titles">
+        <item>expenses</item>
+        <item>incomes</item>
+        <item>balance</item>
+    </array>
 
 </resources>
